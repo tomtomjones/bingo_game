@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+
+
+{% block body %}
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4" id='div_center'><h1>IT IS BINGO</h1></div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+    <br/>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4"> </div>
+            <div class="col-md-4" id='div_center'><h1> <span id="current_bingo_num" method="POST">Click to begin..</span> </h1></div> 
+            <!-- {{ next_ball[0] }} -->
+            <div class="col-md-4" id='div_center'><button type="button" class="btn btn-default" id='btn_next_ball' method="POST">NEXT</button></div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4" id='div_center'>
+                <table class="bingo">
+                    <!-- <thead>
+                      <tr>
+                        <th scope="col">BINGO</th>
+                      </tr>
+                    </thead> -->
+                    <tbody>
+            
+                        {% for i in bingo_numbers %}
+                        <tr>
+                            {% for j in i %}
+                                {% if j == ' ' %}
+                                    <td style="background-color:#cecece;">
+                                {% endif %}
+                                {% if j != ' ' %}
+                                    <td>{{j}}</td>
+                                {% endif %}
+                            {% endfor %}
+                        </tr>   
+                        {% endfor %}
+                      
+                    </tbody>
+                </table>    
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <!-- <h1>jQuery Example</h1>
+                <p><input type=text size=5 name=a> +
+                    <input type=text size=5 name=b> =
+                    <span id=result>?</span>
+                <p><a href=# id=calculate>calculate server side</a> -->
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='javascript.js') }}"></script>
+    
+
+    <script type=text/javascript> $SCRIPT_ROOT = {{ request.script_root|tojson|safe }}; </script>
+
+{% endblock %}
