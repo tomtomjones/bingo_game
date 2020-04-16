@@ -16,6 +16,7 @@ socketio = SocketIO(app)
 
 c_numbers = bingo_card_generator.bingo_call_numbers()
 
+
 @app.route('/_add_numbers')
 def add_numbers():
     a = request.args.get('a', 0, type=int)
