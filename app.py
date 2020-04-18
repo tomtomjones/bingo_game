@@ -17,13 +17,6 @@ socketio = SocketIO(app)
 c_numbers = bingo_card_generator.bingo_call_numbers()
 
 
-@app.route('/_add_numbers')
-def add_numbers():
-    a = request.args.get('a', 0, type=int)
-    b = request.args.get('b', 0, type=int)
-    return jsonify(result=a + b)
-
-
 @app.route('/_next_number')
 def next_number():
 
@@ -52,9 +45,9 @@ def messageReceived(methods=['GET', 'POST']):
     print('message was received!!!')
 
 @socketio.on('my event')
-def handle_my_custom_event(json, methods=['GET', 'POST']):
+def handle_my_custom_event(json, methods=['GET','POST']):
 
-    print('received my event: ' + str(json))
+    print('received my event event: ' + str(json))
     socketio.emit('my response', json, callback=messageReceived)
 
 @socketio.on('get ball')
@@ -63,7 +56,7 @@ def get_ball_event(json, methods=['GET', 'POST']):
     nb = next_number()
     print(nb)
     json['bingo'] = str(nb)
-    print('received my event: ' + str(json))
+    print('received my event get ball: ' + str(json))
     socketio.emit('my response', json, callback=messageReceived)
 
 
@@ -85,6 +78,6 @@ def css():
 
 if __name__ == '__main__':
     # app.run(debug=True)     # port=5001
-    socketio.run(app, debug=True)
+    socketio.run(app) #, debug=True
 
 

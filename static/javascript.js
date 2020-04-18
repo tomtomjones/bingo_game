@@ -40,11 +40,12 @@ var bingo_num_for_newcomers
 
 $(function() {
   $('#current_bingo_num').bind('click', function() {
-      socket.emit( 'get ball', {MESSAGE : 'get a ball'});
+      socket.emit( 'get ball', {}); //MESSAGE : 'get a ball'
       // $("p:first").replaceWith("Hello world!")
       // $( '#current_bingo_num' ).text( '' );
       socket.on( 'my response', function( msg ) { $( '#current_bingo_num').text(+msg.bingo)} );  //; bingo_num_for_newcomers = text(+msg.bingo)
-      bingo_num_for_newcomers = $( '#current_bingo_num' ).text( '' );
+      
+      // bingo_num_for_newcomers = $( '#current_bingo_num' ).text( '' );
       
       // $.getJSON($SCRIPT_ROOT + '/_next_number', {
       // // a: $('#current_bingo_num').val()
@@ -107,8 +108,8 @@ var form = $( 'form' ).on( 'submit', function( e ) {
 socket.on( 'my response', function( msg ) {
   console.log( msg )
   if( typeof msg.user_name !== 'undefined' ) {
-    $( 'h3' ).remove()
-    $( 'div.message_holder' ).append( '<br/><b style="color: #000">'+msg.user_name+'</b> '+msg.message )
-    $( 'div.bingo_holder').append(msg.bingo)
+    // $( 'h3' ).remove()
+    $( 'div.message_holder' ).append( msg.user_name + ' : '+ msg.message + '<br/>') //'<br/><b style="color: #000">'+msg.user_name+'</b> '+msg.message )
+    // $( 'div.bingo_holder').append(msg.bingo)
   }
 })
