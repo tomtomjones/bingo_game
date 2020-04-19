@@ -33,5 +33,27 @@ th, td {
 
 #current_bingo_num {
 	padding-bottom: 5px 10px;
-	font-size: 32px;
+	font-size: 150px;
+
+}
+
+.message_holder {
+	/* max-width:300px;  */
+	max-width:80%;
+	height:150px;
+	max-height:100px;
+	min-height:50px;
+	overflow: auto;
+	margin: 0 auto;
+	border: 1px solid rgb(0, 0, 0);
+	
+
+}
+
+.custom_header {
+	background-color:#048243;
+	border-bottom: 10px solid #044A05;
+	font-size: 110px;
+	max-height: 150px;
+	color:whitesmoke;
 }

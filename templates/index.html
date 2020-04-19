@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
 {% block body %}
-    <div class="jumbotron">
+    <div class="custom_header">
         <div class="row">
             <div class="col-md-4"></div>
-            <div class="col-md-4" id='div_center'><h1>BINGO</h1></div>
+            <div class="col-md-4" id='div_center'>BINGO</div>
             <div class="col-md-4"></div>
         </div>
     </div>
@@ -12,13 +12,14 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-4"> </div>
-            <div class="col-md-4" id='div_center'><h1> <span id="current_bingo_num" method="POST">Click to begin..</span> </h1></div> 
-            <!-- {{ next_ball[0] }} -->
+            <div class="col-md-4" id='div_center'> <span id="current_bingo_num" method="GET"></span> </div> <!-- Click to begin.. -->
+
             <!-- <div class="col-md-4" id='div_center'><button type="button" class="btn btn-default" id='btn_next_ball' method="POST">NEXT</button></div> -->
         </div>
         <br/>
+        
         <div class="row">
-            <div class="col-md-4"></div>
+            <div class="col-md-4">{% block btn_admin %} {%endblock btn_admin%}</div>
             <div class="col-md-4" id='div_center'>
                 <table class="bingo">
                     <!-- <thead>
@@ -51,15 +52,14 @@
 
         <div class="row">
             <div class="col-md-4"></div>
-            <div class="col-md-4" id='div_center'>
+            <div class="col-md-4">
                 
-                <div class='message_holder' style="width:309px; height:63px;"></div>
+                <div class='message_holder'></div>
                 <br/> 
-                <form action="" method="POST">
+                <form action="" method="POST" id='div_center'>
                     <input type="text" class="username" placeholder="User Name"/>
                     <input type="text" class="message" placeholder="Messages"/>
-                    <br/> 
-                    <br/> <input type="submit"/>
+                    <input type="submit"/>
                 </form>
 
 
